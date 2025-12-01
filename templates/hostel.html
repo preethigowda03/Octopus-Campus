@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Hostel</h2>
+  <h3>Submit Complaint</h3>
+  <form method="post">
+    <label>Room No</label><br>
+    <input name="room_no" required><br>
+    <label>Issue</label><br>
+    <textarea name="issue" required></textarea><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <h3>Your Complaints</h3>
+  {% for cp in complaints %}
+    <div class="card">
+      <p><strong>Issue:</strong> {{ cp.issue }}</p>
+      <p><strong>Status:</strong> {{ cp.status }}</p>
+      <small>{{ cp.created_at.strftime('%Y-%m-%d') }}</small>
+    </div>
+  {% else %}
+    <p>No complaints.</p>
+  {% endfor %}
+{% endblock %}

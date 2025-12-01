@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Cafeteria</h2>
+  {% for m in menus %}
+    <div class="card">
+      <h4>{{ m.day }}</h4>
+      <p>{{ m.menu }}</p>
+    </div>
+  {% else %}
+    <p>No menu.</p>
+  {% endfor %}
+{% endblock %}

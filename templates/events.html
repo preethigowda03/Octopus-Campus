@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Events</h2>
+  {% for ev in events %}
+    <div class="card">
+      <h4>{{ ev.title }} - {{ ev.date }}</h4>
+      <p>{{ ev.description }}</p>
+      <p><small>{{ ev.location }}</small></p>
+    </div>
+  {% else %}
+    <p>No events.</p>
+  {% endfor %}
+{% endblock %}

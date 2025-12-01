@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h2>Welcome, {{ current_user.full_name or current_user.username }}</h2>  <section>
+    <h3>Quick Actions</h3>
+    <ul>
+      <li><a href="{{ url_for('academics') }}">Academics</a></li>
+      <li><a href="{{ url_for('hostel') }}">Hostel</a></li>
+      <li><a href="{{ url_for('library') }}">Library</a></li>
+    </ul>
+  </section>  <section>
+    <h3>Latest Notifications</h3>
+    <ul>
+    {% for n in notifications %}
+      <li>
+        <strong>{{ n.title }}</strong> - {{ n.message }}
+        {% if n.created_at %}
+          <small>({{ n.created_at.strftime('%Y-%m-%d %H:%M') }})</small>
+        {% endif %}
+      </li>
+    {% else %}
+      <li>No notifications</li>
+    {% endfor %}
+    </ul>
+  </section>  <section>
+    <h3>Create Notification (demo)</h3>
+    <form method="post" action="{{ url_for('create_notification') }}">
+      <input name="title" placeholder="Title" required>
+      <input name="message" placeholder="Message" required>
+      <button type="submit">Create</button>
+    </form>
+  </section>
+{% endblock %}

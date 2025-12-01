@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Academics</h2>
+  {% for c in courses %}
+    <div class="card">
+      <h4>{{ c.course }}</h4>
+      <p><strong>Timetable:</strong> {{ c.timetable }}</p>
+      <p><strong>Assignments:</strong> {{ c.assignments }}</p>
+    </div>
+  {% else %}
+    <p>No academic data.</p>
+  {% endfor %}
+{% endblock %}
